@@ -3,9 +3,13 @@ const localmongoose=require('passport-local-mongoose');
 
 const UserSchema=new mongoose.Schema(
     {
-        username:String,
-        password:String,
-       
+                google:{
+            
+            id: String,
+            token: String,
+            email: String,
+            name: String
+        }
     },
   
 );
@@ -14,4 +18,4 @@ UserSchema.methods.validPassword = function( pwd ) {
     return ( this.password === pwd );
 };
 UserSchema.plugin(localmongoose);
-module.exports=mongoose.model("User",UserSchema);
+module.exports=mongoose.model("Google",UserSchema);
